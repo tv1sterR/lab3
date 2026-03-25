@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.ViewerController">
+
+    <top>
+        <HBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <Button fx:id="btnFirst" text="«"/>
+                <Button fx:id="btnPrev" text="&lt;"/>
+                <Button fx:id="btnNext" text="&gt;"/>
+                <Button fx:id="btnLast" text="»"/>
+                <Button fx:id="btnAuto" text="Авто"/>
+                <Label fx:id="lblCounter" text="0 из 0"/>
+                <Label text="Фильтр:"/>
+                <ComboBox fx:id="filterBox" prefWidth="120"/>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane>
+            <children>
+                <ImageView fx:id="imageView"
+                           preserveRatio="true"
+                           fitWidth="800"
+                           fitHeight="600"/>
+            </children>
+        </StackPane>
+    </center>
+
+    <bottom>
+        <VBox spacing="5">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <Label fx:id="lblInfo" text="Информация о файле"/>
+            </children>
+        </VBox>
+    </bottom>
+
+</BorderPane>

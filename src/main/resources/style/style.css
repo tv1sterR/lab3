@@ -1,0 +1,11 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+HBox {
+    -fx-background-color: #f0f0f0;
+}
+
+Label {
+    -fx-font-size: 12px;
+}
