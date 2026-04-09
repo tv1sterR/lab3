@@ -20,9 +20,14 @@
                 <Button fx:id="btnNext" text="&gt;"/>
                 <Button fx:id="btnLast" text="»"/>
                 <Button fx:id="btnAuto" text="Авто"/>
+
                 <Label fx:id="lblCounter" text="0 из 0"/>
+
                 <Label text="Фильтр:"/>
                 <ComboBox fx:id="filterBox" prefWidth="120"/>
+
+                <Label text="Эффект:"/>
+                <ComboBox fx:id="effectBox" prefWidth="120"/>
             </children>
         </HBox>
     </top>

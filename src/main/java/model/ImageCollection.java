@@ -26,17 +26,14 @@ public class ImageCollection implements Aggregate {
         };
 
         this.files = directory.listFiles(filter);
-        if (this.files == null) {
-            this.files = new File[0];
-        }
+        if (this.files == null) this.files = new File[0];
     }
 
     @Override
     public Iterator getIterator() {
-        return new ImageFileIterator();
+        return new SimpleIterator();
     }
 
-    // Получить файл по индексу
     public File getFile(int index) {
         if (index < 0 || index >= files.length) return null;
         return files[index];
@@ -46,48 +43,18 @@ public class ImageCollection implements Aggregate {
         return files.length;
     }
 
-    // Первый кадр
-    public Image first() {
-        if (files.length == 0) return null;
-        return loader.loadFromFile(files[0]);
-    }
-
-    // Последний кадр
-    public Image last() {
-        if (files.length == 0) return null;
-        return loader.loadFromFile(files[files.length - 1]);
-    }
-
-    // Внутренний итератор
-    private class ImageFileIterator implements Iterator {
-        private int currentIndex = -1; // начнём "до" первого
+    private class SimpleIterator implements Iterator {
 
         @Override
-        public boolean hasNext() {
-            return files.length > 0;
-        }
-
-        @Override
-        public Image next() {
+        public Image next(int index) {
             if (files.length == 0) return null;
-            currentIndex = (currentIndex + 1) % files.length;
-            return loader.loadFromFile(files[currentIndex]);
+            return loader.loadFromFile(files[index]);
         }
 
         @Override
-        public Image preview() {
+        public Image preview(int index) {
             if (files.length == 0) return null;
-            currentIndex = (currentIndex - 1 + files.length) % files.length;
-            return loader.loadFromFile(files[currentIndex]);
-        }
-
-        @Override
-        public boolean hasPreview() {
-            return files.length > 0;
-        }
-
-        public void reset() {
-            currentIndex = -1;
+            return loader.loadFromFile(files[index]);
         }
     }
 }
